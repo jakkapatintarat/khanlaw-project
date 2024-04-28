@@ -7,6 +7,11 @@
         {{-- @php
             dump($booking)
         @endphp --}}
+        @php
+        $timezone = new DateTimeZone('UTC');
+        $check_in = date_create($booking->check_in, $timezone);
+        $check_out = date_create($booking->check_out, $timezone);
+        @endphp
         <div class="d-flex justify-content-center my-5">
             <div class="card" style="width: 50rem;">
                 <div class="card-header">
@@ -29,7 +34,7 @@
                             <path
                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
                             <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
-                        </svg>เช็คอิน : {{ $booking->check_in }}
+                        </svg>เช็คอิน : {{ date_format($check_in, 'd/m/Y') }}
                     </li>
                     <li class="list-group-item">
                         <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -38,7 +43,7 @@
                             <path
                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
                             <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
-                        </svg>เช็คเอาท์ : {{ $booking->check_out }}
+                        </svg>เช็คเอาท์ : {{ date_format($check_out, 'd/m/Y') }}
                     </li>
                     <li class="list-group-item">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

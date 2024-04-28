@@ -73,7 +73,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             @if (auth()->user()->role === 'admin')
-                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">จัดการเว็บไซต์</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">จัดการข้อมูลห้องพัก</a></li>
                             @endif
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
