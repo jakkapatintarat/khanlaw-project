@@ -36,7 +36,7 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->f_name }} {{ $user->l_name }}</td>
                 <td>{{ $user->sex }}</td>
-                <td>{{ $user->role }}</td>
+                <td>{{ $user->role == 'user' ? 'Member' : 'Admin' }}</td>
                 <td>
                     <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUser">แก้ไข</a>
                     <a href="{{ route('delete-user', $user->id) }}" class="btn btn-danger"
