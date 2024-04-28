@@ -6,8 +6,8 @@
     <div class="container text-center mt-5" style="border: 0">
         <div class="row align-items-start">
             <div class="col">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-add me-2"
-                    viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-house-add me-2" viewBox="0 0 16 16">
                     <path
                         d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h4a.5.5 0 1 0 0-1h-4a.5.5 0 0 1-.5-.5V7.207l5-5 6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
                     <path
@@ -37,6 +37,11 @@
         </div>
     </div>
 
+    <?php
+    $timezone = new DateTimeZone('UTC');
+    $check_in = date_create($booking_data->check_in, $timezone);
+    $check_out = date_create($booking_data->check_out, $timezone);
+    ?>
     <div class="container-fluid text-center mt-4" style="border: 0">
         <div class="row">
             <div class="col">
@@ -46,7 +51,7 @@
                     <path
                         d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
                     <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
-                </svg>Check-in {{ $booking_data->check_in }}
+                </svg>Check-in {{ date_format($check_in, 'd/m/Y') }}
             </div>
             <div class="col">
                 <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -55,7 +60,7 @@
                     <path
                         d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
                     <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
-                </svg>Check-out {{ $booking_data->check_out }}
+                </svg>Check-out {{ date_format($check_out, 'd/m/Y') }}
             </div>
             <div class="col">
                 <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -78,33 +83,38 @@
     <div class="container mt-5 my-5">
         <main class="w-100 m-auto">
 
-            <form action="{{ route('customercheck', $booking_data->id) }}"  method="POST" enctype="multipart/form-data">
+            <form action="{{ route('customercheck', $booking_data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <ins class="h5 mb-3 fw-narmal">กรอกข้อมูลผู้เข้าพัก</ins>
                 <!--ส่วนของชื่อ-->
                 <div class="form-floating mt-4">
-                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="firstname" required>
+                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="firstname"
+                        required>
                     <label for="name">กรอกชื่อของคุณ</label>
                 </div>
                 <!--ส่วนของนามสกุล-->
                 <div class="form-floating mt-4">
-                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="lastname" required>
+                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="lastname"
+                        required>
                     <label for="lname">กรอกนามสกุลของคุณ</label>
                 </div>
                 <!--ส่วนของเลขบัตรประชาชน-->
                 <div class="form-floating mt-4">
-                    <input type="number" class="form-control" id="identity_number" name="identity_number" placeholder="identity" required>
+                    <input type="number" class="form-control" id="identity_number" name="identity_number"
+                        placeholder="identity" required>
                     <label for="identity_number">กรอกเลขบัตรประชาชน</label>
                 </div>
                 <!--ส่วนของ tel-->
                 <div class="form-floating mt-4">
-                    <input type="number" class="form-control" id="tel" name="tel" placeholder="number" required>
+                    <input type="number" class="form-control" id="tel" name="tel" placeholder="number"
+                        required>
                     <label for="tel">กรอกเบอร์โทรศัพท์ของคุณ</label>
                 </div>
                 <!--ส่วนของ e-mail-->
                 <div class="form-floating mt-4">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="email"
+                        required>
                     <label for="email">กรอกอีเมล</label>
                 </div>
 
