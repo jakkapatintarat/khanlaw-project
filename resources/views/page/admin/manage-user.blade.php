@@ -35,7 +35,7 @@
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->f_name }} {{ $user->l_name }}</td>
-                <td>{{ $user->sex }}</td>
+                <td>{{ $user->sex == 'male' ? 'ชาย' : 'หญิง' }}</td>
                 <td>{{ $user->role == 'user' ? 'Member' : 'Admin' }}</td>
                 <td>
                     <a href="{{ route('view-edit-user', $user->id) }}" class="btn btn-warning">แก้ไข</a>
