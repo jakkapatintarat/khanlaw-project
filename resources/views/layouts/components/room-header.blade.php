@@ -1,7 +1,14 @@
 <div>
-    <img src="{{ asset('img/index.jpg') }}" alt="อากาศ" class="crop-img">
+    <div class="position-relative">
+        <img src="{{ asset('img/index.jpg') }}" alt="อากาศ" class="d-flex w-100 h-100 object-fit-cover">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <h1>คานหลาว วิวพอยท์</h1>
+            <h1 align="center">ยินดีให้บริการ</h1>
+        </div>
+    </div>
+    {{-- <img src="{{ asset('img/index.jpg') }}" alt="อากาศ" class="crop-img">
     <h1 class="welcome">Welcome</h1>
-    <h1 class="descript">คานหลาว วิวพอยท์</h1>
+    <h1 class="descript">คานหลาว วิวพอยท์</h1> --}}
 </div>
 
 <nav class="navbar navbar-expand-lg mt-4">
