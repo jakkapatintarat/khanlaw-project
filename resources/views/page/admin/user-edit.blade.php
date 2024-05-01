@@ -123,10 +123,9 @@
             </div>
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="sex" class="form-label">เพศ</label>
+                    <label for="sex" class="form-label">เพศ : {{ $namesex = $user->sex == 'male' ? 'ชาย' : 'หญิง' }}</label>
                     <select class="form-select" id="sex" name="sex">
-                        {{ $namesex = $user->sex == 'male' ? 'ชาย' : 'หญิง' }}
-                        <option hidden>{{ $namesex }}</option>
+                        <option hidden value="{{ $user->role }}">{{ $namesex }}</option>
                         <option value="male">ชาย</option>
                         <option value="female">หญิง</option>
                     </select>
@@ -137,7 +136,8 @@
                     <label for="role" class="form-label">ตำแหน่ง :
                         {{ $user->role == 'user' ? 'Member' : 'Admin' }}</label>
                     <select class="form-select" id="role" name="role">
-                        <option selected hidden>เลือกตำแหน่ง</option>
+                        <option selected hidden value="{{ $user->role }}">
+                            {{ $user->role == 'user' ? 'Member' : 'Admin' }}</option>
                         <option value="user">Member</option>
                         <option value="admin">Admin</option>
                     </select>
