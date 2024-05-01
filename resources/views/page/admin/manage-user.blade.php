@@ -38,14 +38,14 @@
                 <td>{{ $user->sex }}</td>
                 <td>{{ $user->role == 'user' ? 'Member' : 'Admin' }}</td>
                 <td>
-                    <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUser">แก้ไข</a>
+                    <a href="{{ route('view-edit-user', $user->id) }}" class="btn btn-warning">แก้ไข</a>
                     <a href="{{ route('delete-user', $user->id) }}" class="btn btn-danger"
                         onclick="return confirm('ต้องการลบ user นี้หรือไม่')">ลบ</a>
                 </td>
             </tbody>
 
             {{-- edit modal --}}
-            <div class="modal fade" id="editUser">
+            {{-- <div class="modal fade" id="editUser">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header -->
@@ -109,7 +109,7 @@
 
 
                 </div>
-            </div>
+            </div> --}}
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
@@ -133,13 +133,13 @@
                         @csrf
                         <div class="mb-3">
                             <label for="username" class="form-label">ชื่อผู้ใช้</label>
-                            <input type="text" class="form-control" id="username" placeholder="username"
-                                name="username" required>
+                            <input type="text" class="form-control" id="username" placeholder="username" name="username"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">อีเมล์</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email"
-                                name="email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">รหัสผ่าน</label>
@@ -148,13 +148,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="f_name" class="form-label">ชื่อ</label>
-                            <input type="text" class="form-control" id="f_name" placeholder="Firstname"
-                                name="f_name" required>
+                            <input type="text" class="form-control" id="f_name" placeholder="Firstname" name="f_name"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="l_name" class="form-label">นามสกุล</label>
-                            <input type="text" class="form-control" id="l_name" placeholder="Lastname"
-                                name="l_name" required>
+                            <input type="text" class="form-control" id="l_name" placeholder="Lastname" name="l_name"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="sex" class="form-label">เพศ</label>

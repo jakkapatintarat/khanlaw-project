@@ -65,25 +65,6 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
         }
 
-        .registration-form .social-icons {
-            margin-top: 30px;
-            margin-bottom: 16px;
-        }
-
-        .registration-form .social-icons a {
-            font-size: 23px;
-            margin: 0 3px;
-            color: #5691ff;
-            border: 1px solid;
-            border-radius: 50%;
-            width: 45px;
-            display: inline-block;
-            height: 45px;
-            text-align: center;
-            background-color: #fff;
-            line-height: 45px;
-        }
-
         .registration-form .social-icons a:hover {
             text-decoration: none;
             opacity: 0.6;
@@ -105,7 +86,9 @@
 @endsection
 @section('content')
     <div class="registration-form">
-        <form>
+        <form method="POST" action="{{ route('edituser', $user->id) }}">
+            @method('PUT')
+            @csrf
             <div class="form-icon">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
@@ -115,24 +98,55 @@
                     </svg>
                 </span>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" id="username" placeholder="Username">
+            <div class="mb-3">
+                <label for="username" class="form-label">ชื่อผู้ใช้</label>
+                <input type="text" class="form-control" id="username" value="{{ $user->username }}" name="username"
+                    disabled>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" id="password" placeholder="Password">
+            <div class="mb-3">
+                <label for="email" class="form-label">อีเมล์</label>
+                <input type="email" class="form-control" id="email" value="{{ $user->email }}" name="email"
+                    disabled>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" id="email" placeholder="Email">
+            <div class="mb-3">
+                <label for="password" class="form-label">รหัสผ่าน</label>
+                <input type="password" class="form-control" id="password" placeholder="password" name="password"
+                    value="">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
+            <div class="mb-3">
+                <label for="f_name" class="form-label">ชื่อ</label>
+                <input type="text" class="form-control" id="f_name" value="{{ $user->f_name }}" name="f_name">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" id="birth-date" placeholder="Birth Date">
+            <div class="mb-3">
+                <label for="l_name" class="form-label">นามสกุล</label>
+                <input type="text" class="form-control" id="l_name" value="{{ $user->l_name }}" name="l_name">
             </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-block create-account">Update</button>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="sex" class="form-label">เพศ</label>
+                    <select class="form-select" id="sex" name="sex">
+                        {{ $namesex = $user->sex == 'male' ? 'ชาย' : 'หญิง' }}
+                        <option hidden>{{ $namesex }}</option>
+                        <option value="male">ชาย</option>
+                        <option value="female">หญิง</option>
+                    </select>
+                </div>
             </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="role" class="form-label">ตำแหน่ง :
+                        {{ $user->role == 'user' ? 'Member' : 'Admin' }}</label>
+                    <select class="form-select" id="role" name="role">
+                        <option selected hidden>เลือกตำแหน่ง</option>
+                        <option value="user">Member</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">ยืนยัน</button>
         </form>
     </div>
 @endsection

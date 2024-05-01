@@ -77,12 +77,17 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
 
+    public function view_edit_user($user_id)
+    {
+        $user = User::where('id', $user_id)->first();
+        return view('page.admin.user-edit', ['user' => $user]);
+    }
     /**
      * แก้ไขผู้ใช้
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
         if ($request->password != null) {
             $user = User::find($id);
             $user->update([
@@ -92,7 +97,7 @@ class UserController extends Controller
                 'sex' => $request->sex,
                 'role' => $request->role,
             ]);
-        }else {
+        } else {
             $user = User::find($id);
             $user->update([
                 'f_name' => $request->f_name,
