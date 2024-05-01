@@ -25,7 +25,7 @@
             <th>username</th>
             <th>email</th>
             <th>full name</th>
-            <th>sex</th>
+            <th>gender</th>
             <th>role</th>
             <th scope="col"><button type="button" class="btn btn-success" data-bs-toggle="modal"
                     data-bs-target="#createUser">เพิ่ม</button></th>
