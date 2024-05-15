@@ -33,6 +33,9 @@
                 <div class="card-body ms-5 mt-4">
                     <ins class="card-title h5">ห้องพัก Holly</ins>
                     <p class="card-text">รายละเอียด</p>
+                    <div class="card-footer" align="right">
+                        <a type="button" href="{{ route('roomholly') }}" class="btn btn-info me-3 text-white">เลือกห้องพัก</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,6 +48,9 @@
                 <div class="card-body ms-5 mt-4">
                     <ins class="card-title h5">ห้องพัก Hazel</ins>
                     <p class="card-text">รายละเอียด</p>
+                    <div class="card-footer" align="right">
+                        <a type="button" href="{{ route('roomhazel') }}" class="btn btn-info me-3 text-white">เลือกห้องพัก</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -74,6 +80,9 @@
                 <div class="card-body ms-5 mt-4">
                     <ins class="card-title h5">ห้องพัก เต้นท์กระโจม</ins>
                     <p class="card-text">รายละเอียด</p>
+                    <div class="card-footer" align="right">
+                        <a type="button" href="{{ route('roomtent') }}" class="btn btn-info me-3 text-white">เลือกห้องพัก</a>
+                    </div>
                 </div>
             </div>
         </div>
