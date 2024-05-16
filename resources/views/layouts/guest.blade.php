@@ -49,11 +49,11 @@
     } */
 </style>
 
-<body style="background-color: #F2F2F2">
+<body style="background-color: #ffffff">
     <main>
         <header
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom"
-            style="background-color: #F2F2F2">
+            style="background-color: #ffffff">
 
             <div class="d-none d-md-block">
                 <ul>
@@ -98,7 +98,7 @@
             @endauth
         </header>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
             <div class="container-fluid ">
                 <a class="navbar-brand ms-4" href="">คานหลาว วิวพอยท์</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
