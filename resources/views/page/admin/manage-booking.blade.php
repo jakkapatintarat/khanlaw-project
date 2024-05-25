@@ -15,6 +15,11 @@
         <section style="background-color: #eee;">
             <div class="container py-5">
                 @foreach ($booking as $item)
+                    <?php
+                    $timezone = new DateTimeZone('UTC');
+                    $checkIn = date_create($item->check_in, $timezone);
+                    $checkOut = date_create($item->check_out, $timezone);
+                    ?>
                     <div class="row justify-content-center mb-3">
                         <div class="col-md-12 col-xl-10">
                             <div class="card shadow-0 border rounded-3">
@@ -52,8 +57,8 @@
                                                     <span>รองรับ ไม่มีห้องพัก คน</span>
                                                     <span class="text-primary"> • </span>
                                                     <span>ประเภท ไม่มีห้องพัก<span>
-                                                        <span class="text-primary"> • </span>
-                                                        <span>ขนาด ไม่มีห้องพัก ตร.ม.<br /></span>
+                                                            <span class="text-primary"> • </span>
+                                                            <span>ขนาด ไม่มีห้องพัก ตร.ม.<br /></span>
                                                 </div>
                                                 <div class="mb-2 text-muted small">
                                                     <span>ราคา ไม่มีห้องพัก บาท</span>
@@ -61,7 +66,8 @@
                                                     <span>บรรยากาศ ไม่มีห้องพัก</span>
                                                 </div>
                                                 <p class="mb-4 mb-md-0">
-                                                    เช็คอิน: {{ $item->check_in }} เช็คเอาท์: {{ $item->check_out }}
+                                                    เช็คอิน: {{ date_format($checkIn, 'd/m/Y') }} เช็คเอาท์:
+                                                    {{ date_format($checkOut, 'd/m/Y') }}
                                                 </p>
                                             @else
                                                 <h5>ห้องพักที่ {{ $item->room->number }}</h5>
@@ -78,7 +84,8 @@
                                                     <span>บรรยากาศ {{ $item->room->vibe }}</span>
                                                 </div>
                                                 <p class="mb-4 mb-md-0">
-                                                    เช็คอิน: {{ $item->check_in }} เช็คเอาท์: {{ $item->check_out }}
+                                                    เช็คอิน: {{ date_format($checkIn, 'd/m/Y') }} เช็คเอาท์:
+                                                    {{ date_format($checkOut, 'd/m/Y') }}
                                                 </p>
                                             @endif
                                         </div>
@@ -88,9 +95,9 @@
                                                 {{-- <span class="text-danger"><s>$20.99</s></span> --}}
                                             </div>
                                             @if ($item->room == null)
-                                            <h6 class="text-danger">ไม่มีห้องพัก</h6>
+                                                <h6 class="text-danger">ไม่มีห้องพัก</h6>
                                             @else
-                                            <h6 class="text-danger">ตรวจสอบข้อมูลให้แน่ใจก่อนติดต่อลูกค้า</h6>
+                                                <h6 class="text-danger">ตรวจสอบข้อมูลให้แน่ใจก่อนติดต่อลูกค้า</h6>
                                             @endif
                                             <div class="d-flex flex-column mt-4">
                                                 @if ($item->room == null)
