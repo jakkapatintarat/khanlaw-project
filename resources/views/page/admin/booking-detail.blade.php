@@ -3,6 +3,10 @@
     รายละเอียดการจองที่ {{ $booking->id }}
 @endsection
 @section('content')
+    <?php
+    $checkIn = new DateTime($booking->check_in);
+    $checkOut = new DateTime($booking->check_out);
+    ?>
     <h1 class="mt-4">รายละเอียดการจอง</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
@@ -88,7 +92,7 @@
                                         <p class="mb-0">เช็คอิน</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ $booking->check_in }}</p>
+                                        <p class="text-muted mb-0">{{ date_format($checkIn, 'd/m/Y') }}</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -97,7 +101,7 @@
                                         <p class="mb-0">เช็คเอาท์</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ $booking->check_out }}</p>
+                                        <p class="text-muted mb-0">{{ date_format($checkOut, 'd/m/Y') }}</p>
                                     </div>
                                 </div>
                                 <hr>
