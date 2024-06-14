@@ -99,10 +99,20 @@
                                                         ไม่มีห้องพัก
                                                     </button>
                                                 @else
+                                                    @if ($item->status == 'success')
+                                                        <button class="btn btn-success btn-sm disabled"
+                                                            type="button">กรุณาชำระเงินที่หน้าเคาเตอร์ภายในวันที่เข้าพัก</button>
+                                                    @elseif ($item->status == 'cancel')
+                                                        <button class="btn btn-danger btn-sm disabled"
+                                                            type="button">ยกเลิกการจองแล้ว</button>
+                                                    @elseif ($item->status == 'pending')
+                                                        <button class="btn btn-warning btn-sm disabled"
+                                                            type="button">รอดำเนินการ</button>
+                                                    @endif
                                                     {{-- <a href="{{ route('bookingdetail', $item->id) }}"
                                                     class="btn btn-primary btn-sm" type="button">รายละเอียด</a> --}}
-                                                    <button class="btn btn-success btn-sm disabled"
-                                                        type="button">กรุณาชำระเงินที่หน้าเคาเตอร์ภายในวันที่เข้าพัก</button>
+                                                    {{-- <button class="btn btn-success btn-sm disabled"
+                                                        type="button">กรุณาชำระเงินที่หน้าเคาเตอร์ภายในวันที่เข้าพัก</button> --}}
                                                 @endif
                                             </div>
                                         </div>

@@ -17,7 +17,7 @@ class Controller extends BaseController
 
     public function dashboard()
     {
-        $booking = Booking::all();
+        $booking = Booking::where('status', 'success')->get();
         $total = $booking->sum('total');
         $room = room::all()->count();
         $user = User::where('role', 'user')->count();

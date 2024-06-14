@@ -68,8 +68,13 @@ Route::prefix('admin')->middleware(['auth', 'checkrole'])->group(function () {
     Route::post('createuser', [UserController::class, 'createuser'])->name('createuser');
     Route::put('edituser/{user_id}', [UserController::class, 'update'])->name('edituser');
     Route::get('delete-user/{user_id}', [UserController::class, 'destroy'])->name('delete-user');
+    // จัดการการจอง
     Route::get('manage-booking', [App\Http\Controllers\BookingController::class, 'adminbooking'])->name('managebooking');
     Route::get('booking-detail/{booking_id}', [App\Http\Controllers\BookingController::class, 'adminbookingdetail'])->name('bookingdetail');
+    Route::get('booking-update/{booking_id}/{status}', [BookingController::class, 'update_status'])->name('booking_update_status');
+    Route::get('booking-find', [BookingController::class, 'find'])->name('booking-find');
+    Route::get('booking-filter/{status}', [BookingController::class, 'find_status_booking'])->name('booking-findbystatus');
+
     Route::get('edituser/{user_id}', [UserController::class, 'view_edit_user'])->name('view-edit-user'); // หน้า view แก้ไข user
 });
 

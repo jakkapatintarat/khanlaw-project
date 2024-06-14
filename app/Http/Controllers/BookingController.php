@@ -123,4 +123,35 @@ class BookingController extends Controller
         $customer = Customer::where('booking_id', $id)->first();
         return view('page.admin.booking-detail', ['booking' => $booking, 'customer' => $customer]);
     }
+
+    // เปลี่ยนสถานะการจอง รอดำเนินการ -> ยืนยัน / ยกเลิก
+    public function update_status($id, $status)
+    {
+        $booking = Booking::find($id);
+        // dump($booking);
+        $booking->status = $status;
+        $booking->save();
+        return redirect()->route('managebooking');
+    }
+
+    // ค้นหาข้อมูลการจองของวันนั้นๆ
+    public function find(Request $request)
+    {
+        $chckIn = $request->selectDate;
+        $booking = Booking::where('check_in', $chckIn)->orderby('id', 'desc')->get();
+        // dump($booking);
+        return view('page.admin.manage-booking', ['booking' => $booking]);
+    }
+
+    // ค้นหาการจองที่ อนุมัติ / ยกเลิก / รอดำเนินการ
+    public function find_status_booking($status)
+    {
+        // ถ้าสถานะเป็นทั้งหมด
+        if ($status == 'all') {
+            $booking = Booking::with('room')->with('user')->orderby('id', 'desc')->get();
+            return redirect()->route('managebooking');
+        }
+        $booking = Booking::where('status', $status)->orderby('id', 'desc')->get();
+        return view('page.admin.manage-booking', ['booking' => $booking]);
+    }
 }

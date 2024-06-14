@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('check_out');
             $table->integer('total');
             $table->integer('amount');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
