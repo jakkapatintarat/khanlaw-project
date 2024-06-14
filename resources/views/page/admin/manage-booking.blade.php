@@ -17,8 +17,10 @@
                 <div class="d-flex mx-5 mb-2">
                     <div class="col ms-5">
                         <a href="{{ route('booking-findbystatus', 'all') }}" class="btn btn-info btn-sm">ทั้งหมด</a>
-                        <a href="{{ route('booking-findbystatus', 'pending') }}" class="btn btn-warning btn-sm">รอดำเนินการ</a>
-                        <a class="btn btn-success btn-sm" href="{{ route('booking-findbystatus', 'success') }}">อนุมัติแล้ว</a>
+                        <a href="{{ route('booking-findbystatus', 'pending') }}"
+                            class="btn btn-warning btn-sm">รอดำเนินการ</a>
+                        <a class="btn btn-success btn-sm"
+                            href="{{ route('booking-findbystatus', 'success') }}">อนุมัติแล้ว</a>
                         <a class="btn btn-danger btn-sm" href="{{ route('booking-findbystatus', 'cancel') }}">ยกเลิกแล้ว</a>
                     </div>
                     <div class="col mx-5">
@@ -178,7 +180,7 @@
             var result = confirm('ยืนยันการดำเนินการ?');
             if (result) {
                 // ไปที่ route
-                var url = `booking-update/${id}/${status}`;
+                var url = `http://khanlaw-project.test/admin/booking-update/${id}/${status}`;
                 window.location.href = url;
             }
         }
